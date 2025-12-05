@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dogum Günü Pastasi 🎂</title>
+<style>
+:root{
+  --bg: #87ceeb;       
+  --layer-1: #4b2e2e;  
+  --layer-2: #5c3a3a;  
+  --layer-3: #6d4747;  
+  --cream: #d9c2a0;    
+  --candle: #ffe066;   
+  --flame-1: #ffd054;  
+  --flame-2: #ff6b35;  
+}
+
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+
+.stage{position:relative;width:720px;height:540px;max-width:96vw;background:transparent;overflow:hidden;}
+
+.blow-cloud{
+  position:absolute;width:24px;height:24px;background:white;border-radius:50%;
+  left:50%;bottom:240px;transform:translateX(-50%) scale(0.1);opacity:0;pointer-events:none;
+}
+@keyframes blow{
+  0%{opacity:0; transform:translateX(-50%) scale(0.1);}
+  20%{opacity:1;}
+  100%{opacity:0; transform:translateX(-50%) translateY(-40px) scale(1.4);}
+}
+
+.cake-area{position:absolute;left:50%;transform:translateX(-50%);bottom:40px;width:480px;height:360px;pointer-events:none}
+
+.layer{position:absolute;left:50%;transform:translateX(-50%) translateY(-120vh);border-radius:18px;box-shadow:0 6px 18px rgba(10,10,10,0.12);}
+.layer .cream{position:absolute;left:8px;right:8px;top:-18px;height:18px;background:var(--cream);border-radius:10px}
+.layer .fruits{position:absolute;left:12px;right:12px;bottom:12px;height:24px;display:flex;gap:8px;align-items:center;}
+.fruit{width:22px;height:22px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.12)}
+
+.layer.l1{width:380px;height:80px;background:var(--layer-1);bottom:0;z-index:3;animation:fall 900ms cubic-bezier(.22,.9,.26,1) 200ms forwards}
+.layer.l2{width:320px;height:80px;background:var(--layer-2);bottom:72px;z-index:2;animation:fall 900ms cubic-bezier(.22,.9,.26,1) 600ms forwards}
+.layer.l3{width:260px;height:80px;background:var(--layer-3);bottom:144px;z-index:1;animation:fall 900ms cubic-bezier(.22,.9,.26,1) 1000ms forwards}
+
+@keyframes fall{
+  0%{transform:translateX(-50%) translateY(-120vh) rotate(-6deg)}
+  60%{transform:translateX(-50%) translateY(30px) rotate(4deg)}
+  100%{transform:translateX(-50%) translateY(0) rotate(0)}
+}
+
+.candle{position:absolute;left:50%;transform:translateX(-50%) translateY(-130vh);width:18px;height:70px;background:var(--candle);border-radius:6px;bottom:228px;z-index:6;animation:fall-candle 1000ms cubic-bezier(.22,.9,.26,1) 1600ms forwards}
+@keyframes fall-candle{
+  0%{transform:translateX(-50%) translateY(-130vh) rotate(-4deg)}
+  70%{transform:translateX(-50%) translateY(20px) rotate(6deg)}
+  100%{transform:translateX(-50%) translateY(0) rotate(0)}
+}
+
+.wick{position:absolute;left:50%;transform:translateX(-50%);top:-8px;width:2px;height:12px;background:#3b2b2b;border-radius:2px}
+.flame{position:absolute;left:50%;transform:translateX(-50%);top:-30px;width:26px;height:36px;border-radius:50%;opacity:0;}
+.flame.lit{opacity:1;animation:flicker 220ms infinite}
+
+@keyframes flicker{
+  0%{transform:translateX(-50%) scale(1)}
+  50%{transform:translateX(-50%) scale(.98)}
+  100%{transform:translateX(-50%) scale(1.02)}
+}
+
+.hint{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;color:#6b5b4a;font-size:14px;opacity:.9}
+
+#snow-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:10;}
+.snowflake{position:absolute;background:white;border-radius:50%;pointer-events:none;}
+
+#birthday-message{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:2rem;color:#fff;text-shadow:2px 2px 6px rgba(0,0,0,0.5);opacity:0;transition: opacity 1s ease;pointer-events:none;z-index:20;text-align:center;
+}
+
+#wish-button{
+  position:absolute;
+  bottom:70px;
+  left:70%;
+  transform:translateX(-50%);
+  padding:12px 24px;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  background:#ffe066;
+  cursor:pointer;
+  z-index:50;
+  pointer-events:auto;
+  transition: transform 0.2s;
+}
+#wish-button:active{
+  transform:translateX(-50%) scale(0.95);
+}
+</style>
+</head>
+<body>
+<div class="stage" id="snow-container">
+
+  <div class="blow-cloud" id="blowCloud"></div>
+
+  <div class="cake-area">
+    <div class="layer l1"><div class="cream"></div>
+      <div class="fruits">
+        <div class="fruit" style="background:transparent;font-size:20px">🍓</div>
+        <div class="fruit" style="background:transparent;font-size:20px">🍒</div>
+        <div class="fruit" style="background:transparent;font-size:20px">🫐</div>
+        <div class="fruit" style="background:transparent;font-size:20px">🍇</div>
+      </div>
+    </div>
+    <div class="layer l2"><div class="cream"></div>
+      <div class="fruits">
+        <div class="fruit" style="background:transparent;font-size:20px">🍓</div>
+        <div class="fruit" style="background:transparent;font-size:20px">🍒</div>
+        <div class="fruit" style="background:transparent;font-size:20px">🫐</div>
+      </div>
+    </div>
+    <div class="layer l3"><div class="cream"></div>
+      <div class="fruits">
+        <div class="fruit" style="background:transparent;font-size:20px">🍓</div>
+        <div class="fruit" style="background:transparent;font-size:20px">🍒</div>
+      </div>
+    </div>
+
+    <div id="candle" class="candle">
+      <div class="wick"></div>
+      <div class="flame" id="flame">
+        <svg width="26" height="36" viewBox="0 0 26 36">
+          <defs>
+            <radialGradient id="g1" cx="50%" cy="30%" r="60%">
+              <stop offset="0%" stop-color="#fff5d6"/>
+              <stop offset="50%" stop-color="var(--flame-1)"/>
+              <stop offset="100%" stop-color="var(--flame-2)"/>
+            </radialGradient>
+          </defs>
+          <path d="M13 0 C18 6 26 12 20 24 C15 34 13 36 13 36 C13 36 11 34 6 24 C0 12 8 6 13 0 Z" fill="url(#g1)" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div id="birthday-message">İyi ki doğdun.Benim hayatımın en güzel anısın. Seni çok seviyorum. Doğum günün kutlu olsun bebeğim ❤️</div>
+  <button id="wish-button">Mumu Söndür</button>
+
+</div>
+
+<script>
+(function(){
+  const flame = document.getElementById('flame');
+  const candle = document.getElementById('candle');
+  const blow = document.getElementById('blowCloud');
+  const message = document.getElementById('birthday-message');
+  const button = document.getElementById('wish-button');
+
+  let isLit = false;
+  let wishStep = 0;
+
+  function onCandleLanded(){
+    setTimeout(()=>{ 
+      flame.classList.add('lit'); 
+      flame.style.opacity = 1; 
+      isLit = true; 
+    },180);
+  }
+
+  candle.addEventListener('animationend',(e)=>{ 
+    if(e.animationName==='fall-candle') onCandleLanded(); 
+  });
+
+  // Kar efekti
+  const snowContainer = document.getElementById('snow-container');
+  function createSnowflake(){
+    const flake = document.createElement('div');
+    flake.className='snowflake';
+    const size = 4 + Math.random()*6;
+    flake.style.width = flake.style.height = size+'px';
+    flake.style.opacity = 0.5 + Math.random()*0.5;
+    flake.style.left = Math.random()*100 + 'vw';
+    flake.style.top = '-10px';
+    snowContainer.appendChild(flake);
+
+    const fallDuration = 8000 + Math.random()*4000;
+    const startX = parseFloat(flake.style.left);
+    const drift = (Math.random()*60 - 30);
+    const endY = window.innerHeight + 10;
+
+    let start = null;
+    function fall(timestamp){
+      if(!start) start=timestamp;
+      const progress = timestamp - start;
+      const ratio = Math.min(progress/fallDuration,1);
+      flake.style.top = (ratio*endY) + 'px';
+      flake.style.left = startX + drift*ratio + 'vw';
+      if(ratio < 1){
+        requestAnimationFrame(fall);
+      } else {
+        snowContainer.removeChild(flake);
+      }
+    }
+    requestAnimationFrame(fall);
+  }
+  setInterval(createSnowflake, 300);
+
+  // Partikül
+  function createParticles(){
+    for(let i=0;i<50;i++){
+      const p = document.createElement('div');
+      p.style.position='absolute';
+      p.style.width = p.style.height = (4+Math.random()*6)+'px';
+      p.style.background = `hsl(${Math.random()*360},100%,50%)`;
+      p.style.borderRadius='50%';
+      p.style.left='50%';
+      p.style.top=candle.offsetTop+'px';
+      p.style.opacity=1;
+      p.style.pointerEvents='none';
+      snowContainer.appendChild(p);
+
+      const vx = (Math.random()-0.5)*6;
+      const vy = -Math.random()*8-2;
+      const lifetime = 80 + Math.random()*20;
+      let age=0;
+
+      function animate(){
+        age++;
+        p.style.left = (p.offsetLeft + vx)+'px';
+        p.style.top = (p.offsetTop + vy + age*0.1)+'px';
+        p.style.opacity = 1-age/lifetime;
+        if(age<lifetime) requestAnimationFrame(animate);
+        else snowContainer.removeChild(p);
+      }
+      animate();
+    }
+  }
+
+  blow.addEventListener('animationend',()=>{ createParticles(); });
+
+  // Tıklama mantığı
+  button.addEventListener('click',()=>{
+    if(!isLit) return;
+
+    if(wishStep===0){
+      message.textContent = "Dilek tuttun mu? 🎁";
+      message.style.opacity = 1;
+      wishStep = 1;
+
+    } else if(wishStep===1){
+      /*message.textContent = "Hayat aşkını dudaklarından öpmeden bu mum sönmez! 🫦";*/
+      message.style.opacity = 1;
+      wishStep = 2;
+
+    } else if(wishStep===2){
+      blow.style.animation = 'none';
+      void blow.offsetWidth;
+      blow.style.animation = 'blow .9s ease-out';
+
+      flame.classList.remove('lit');
+      flame.style.opacity = 0;
+      isLit = false;
+
+      message.textContent = "İyi ki doğdun.Benim hayatımın en güzel anısın. Seni çok seviyorum. Doğum günün kutlu olsun bebeğim ❤️";
+      message.style.opacity = 1;
+
+      wishStep = 3;
+    }
+  });
+})();
+</script>
+</body>
+</html>
